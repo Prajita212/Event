@@ -16,6 +16,7 @@ function Navbar() {
         <Link to="/contact">Contact Us</Link>
         <Link to="/gallery">Gallery</Link>
         <Link to="/services">Services</Link>
+        <Link to ="/login">Login</Link>
       </ul>
     </div>
   );
