@@ -5,18 +5,18 @@ import ContactUs from "./ContactUs";
 
 function Navbar() {
   return (
-    <div className="text-2xl text-gray-950 font-semibold mr-20 ">
+    <div className="text-md text-white font-semibold mr-20 ">
       <ul className="flex space-x-6">
-        <Link to="/">Home</Link>
+        <Link to="/" className=" hover:underline underline-offset-4">Home</Link>
 
-        <Link to="/about" element={<About />}>
+        <Link to="/about" className=" hover:underline underline-offset-4"element={<About />}>
           About
         </Link>
 
-        <Link to="/contact">Contact Us</Link>
-        <Link to="/gallery">Gallery</Link>
-        <Link to="/services">Services</Link>
-        <Link to ="/login">Login</Link>
+        <Link to="/contact" className=" hover:underline underline-offset-4">Contact Us</Link>
+        <Link to="/gallery"className=" hover:underline underline-offset-4">Gallery</Link>
+        <Link to="/services" className=" hover:underline underline-offset-4">Services</Link>
+        <Link to ="/login" className=" hover:underline underline-offset-4">Login</Link>
       </ul>
     </div>
   );
