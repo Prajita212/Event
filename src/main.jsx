@@ -9,6 +9,9 @@ import Services from "./pages/Services";
 import Gallery from "./pages/Gallery";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import Admin_login from "./pages/Admin_login";
+import Admin_signup from "./pages/Admin_signup";
+import Admin from "./pages/Admin";
 
 const root = document.getElementById("root");
 
@@ -23,6 +26,11 @@ ReactDOM.createRoot(root).render(
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/admin-login" element={<Admin_login />} />
+        <Route path="/admin-signup" element={<Admin_signup />} />
+        <Route path="/admin-dashboard" element={<Admin />} />
+        
+        
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

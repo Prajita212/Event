@@ -1,4 +1,5 @@
 import React from "react";
+import { MdEmail } from "react-icons/md";
 import {
   FaLock,
   FaUser,
@@ -29,7 +30,7 @@ function SignUp() {
           <h1 className="text-3xl font-bold ml-15 mb-15 ">Signup</h1>
           <h1 className="">Email Address</h1>
           <div className="flex items-center gap-1.5 border-b p-1">
-            <FaUser className="text-xs text-gray-500" />
+            <MdEmail className="text-xs text-gray-500" />
             <input
               type="email"
               placeholder="Type your Email"
@@ -72,28 +73,7 @@ function SignUp() {
           <p className="text-red-700 text-xs mt-1 ml-2">
             {errors.password?.message}
           </p>
-          <h1>Confirm Password</h1>
-          <div className="flex items-center gap-1.5 border-b p-1">
-            <FaLock className="text-xs text-gray-500" />
-
-            <input
-              type="password"
-              placeholder="Re-enter your password"
-              id="password"
-              {...register("password", {
-                required: "Password is required ",
-                pattern: {
-                  value: PASSWORD_REGEX,
-                  message:
-                    "Password must contain min 8 character including alphabet(upper & lower),number,special character",
-                },
-              })}
-            />
-          </div>
-          <p className="text-red-700 text-xs mt-1 ml-2">
-            {errors.password?.message}
-          </p>
-
+         
           <button
             type="submit"
             className="w-full text-amber-50 bg-gradient-to-r from-gray-500 to-gray-900 p-0.5 items-center mt-1 border rounded-3xl "

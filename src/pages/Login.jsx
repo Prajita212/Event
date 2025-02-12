@@ -1,4 +1,5 @@
 import React from "react";
+import { MdEmail } from "react-icons/md";
 import {
   FaLock,
   FaUser,
@@ -6,7 +7,7 @@ import {
   FaTwitter,
   FaGoogle,
 } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { EMAIL_REGEX } from "../components/regex";
 import { PASSWORD_REGEX } from "../components/regex";
@@ -19,6 +20,8 @@ function Login() {
   function submitForm(data) {
     console.log(data);
   }
+  
+
   return (
     <form onSubmit={handleSubmit(submitForm)}>
       <div
@@ -29,7 +32,7 @@ function Login() {
           <h1 className="text-3xl font-bold ml-15 mb-15 ">Login</h1>
           <h1 className="">Email</h1>
           <div className="flex items-center gap-1.5 border-b p-1">
-            <FaUser className="text-xs text-gray-500" />
+            <MdEmail className="text-xs text-gray-500" />
             <input
               type="email"
               id="email"
