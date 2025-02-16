@@ -3,7 +3,7 @@ import React from "react";
 function About() {
   return (
     
-    <div className="max-w-xl p-4  ">
+    <div className=" p-4 max-w-xl  ">
       <h1 className="text-xl font-bold text-gray-900">Introduction </h1>
 
       <p className="text-gray-700 text-lg  leading-relaxed">

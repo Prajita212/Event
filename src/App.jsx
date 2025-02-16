@@ -1,6 +1,6 @@
 import { BrowserRouter, Link, Route, Router, Routes } from "react-router";
 import Header from "./components/Header";
-import Section from "./components/section";
+import Section from "./components/Section";
 import About from "./pages/About";
 import ContactUs from "./pages/ContactUs";
 import Footer from "./components/Footer";

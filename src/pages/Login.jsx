@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { MdEmail } from "react-icons/md";
 import {
   FaLock,
@@ -7,80 +8,70 @@ import {
   FaTwitter,
   FaGoogle,
 } from "react-icons/fa";
-import { Link, useNavigate } from "react-router";
-import { useForm } from "react-hook-form";
-import { EMAIL_REGEX } from "../components/regex";
-import { PASSWORD_REGEX } from "../components/regex";
 
 function Login() {
-  const { register, handleSubmit, formState } = useForm();
-  const { errors } = formState;
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  const { name, ref, onChange, onBlur } = register("email");
-  function submitForm(data) {
-    console.log(data);
-  }
-  
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const user = users.find(
+      (u) => u.email === email && u.password === password
+    );
+    if (user) {
+      navigate("/");
+    } else {
+      setError("Invalid email or password.");
+    }
+  };
 
   return (
-    <form onSubmit={handleSubmit(submitForm)}>
-      <div
-        className="min-h-screen flex items-center justify-center
-      bg-gradient-to-r from-gray-900 to-gray-500"
-      >
-        <div className=" font-mono bg-amber-50 border rounded-xl border-amber-50 p-10 ">
-          <h1 className="text-3xl font-bold ml-15 mb-15 ">Login</h1>
-          <h1 className="">Email</h1>
+    <div
+      className="min-h-screen flex items-center justify-center
+  bg-gradient-to-r from-gray-900 to-gray-500"
+    >
+      <div className=" font-mono bg-amber-50 border rounded-xl border-amber-50 p-10 ">
+        <h2 className="text-3xl font-bold ml-15 mb-15 ">Login</h2>
+
+        <form onSubmit={handleLogin}>
+          <label>Email</label>
           <div className="flex items-center gap-1.5 border-b p-1">
             <MdEmail className="text-xs text-gray-500" />
+
             <input
               type="email"
-              id="email"
-              placeholder="Type your Email"
-              {...register("email", {
-                required: "Email address is required",
-                pattern: {
-                  value: EMAIL_REGEX,
-                  message: "Invalid email address",
-                },
-              })}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
-          <p className="text-red-700 text-xs mt-1 ml-2">
-            {errors.email?.message}
-          </p>
-
-          <h1>Password</h1>
+          <label>Password</label>
           <div className="flex items-center gap-1.5 border-b p-1">
             <FaLock className="text-xs text-gray-500" />
 
             <input
               type="password"
-              id="password"
-              placeholder="Type your password"
-              {...register("password", {
-                required: "Password is required ",
-                pattern: {
-                  value: PASSWORD_REGEX,
-                  message: "Password must contain min 8 character including alphabet(upper & lower),number,special character",
-                },
-              })}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <p className="text-red-700 text-xs mt-1 ml-2">
-            {errors.password?.message}
-          </p>
-          <div className="mt-3 text-sm"></div>
-          <Link to="/">
-            <h2>Forgot your password ? </h2>
-          </Link>
+          {error && <p style={{ color: "red" }}>{error}</p>}
+          <div className="mt-3 text-sm">
+            <Link to="/signup">
+              <h2>Forgot your password ? </h2>
+            </Link>
+          </div>
+
           <button
             type="submit"
             className="w-full text-amber-50 bg-gradient-to-r from-gray-500 to-gray-900 p-0.5 items-center mt-1 border rounded-3xl "
           >
             Login
           </button>
+
           <h2 className="text-sm ml-10 mt-1.5">
             Or{" "}
             <Link to="/signup">
@@ -99,9 +90,9 @@ function Login() {
               <FaGoogle className="hover:text-red-500" />
             </Link>
           </div>
-        </div>
+        </form>
       </div>
-    </form>
+    </div>
   );
 }
 

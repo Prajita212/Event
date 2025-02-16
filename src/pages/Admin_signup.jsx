@@ -60,7 +60,7 @@ function Admin_signup() {
        <div className=" font-mono bg-amber-50 border rounded-xl border-amber-50 p-10 ">
      
       <h2  className="text-3xl font-bold ml-14 mb-15 ">Signup</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      
       <form onSubmit={handleSignup}>
     
           <label>Username</label>
@@ -95,6 +95,7 @@ function Admin_signup() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
         <button type="submit"  className="w-full text-amber-50 bg-gradient-to-r from-gray-500 to-gray-900 p-0.5 items-center mt-1 border rounded-3xl "
       >Signup</button>
        <h2 className="text-sm ml-10 mt-1.5">Or Sign Up Using</h2>
